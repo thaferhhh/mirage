@@ -253,6 +253,3 @@ const AddPackagePage = () => {
 };
 
 export default AddPackagePage;
-
-
-export default AddPackagePage;

@@ -273,6 +273,3 @@ const EditPackagePage = () => {
 };
 
 export default EditPackagePage;
-
-
-export default EditPackagePage;
