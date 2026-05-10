@@ -3,10 +3,11 @@ import { prisma } from '@/lib/prisma';
 
 export async function GET(
   request: NextRequest,
-  context: { params: Promise<{ id: string }> }
+  context: any
 ) {
   try {
-    const { id } = await context.params;
+    const params = await context.params;
+    const { id } = params;
     const pkg = await prisma.package.findUnique({
       where: { id: parseInt(id) },
     });
@@ -19,10 +20,11 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  context: { params: Promise<{ id: string }> }
+  context: any
 ) {
   try {
-    const { id } = await context.params;
+    const params = await context.params;
+    const { id } = params;
     const body = await request.json();
     const updatedPackage = await prisma.package.update({
       where: { id: parseInt(id) },
@@ -47,10 +49,11 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  context: { params: Promise<{ id: string }> }
+  context: any
 ) {
   try {
-    const { id } = await context.params;
+    const params = await context.params;
+    const { id } = params;
     await prisma.package.delete({
       where: { id: parseInt(id) },
     });

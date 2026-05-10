@@ -3,10 +3,13 @@ import { prisma } from '@/lib/prisma';
 
 export async function GET(
   request: NextRequest,
-  context: { params: Promise<{ id: string }> }
+  context: any
 ) {
   try {
-    const { id } = await context.params;
+    // Handling both Promise and non-Promise params for compatibility
+    const params = await context.params;
+    const { id } = params;
+    
     const post = await prisma.blog.findUnique({
       where: { id: parseInt(id) },
     });
