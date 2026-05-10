@@ -1,0 +1,90 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  engineType = "library"
+  binaryTargets = ["native", "windows"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  name      String?
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Package {
+  id            Int      @id @default(autoincrement())
+  title         String
+  description   String   @db.Text
+  image         String
+  price         Float
+  oldPrice      Float?
+  discount      Int?
+  duration      String
+  location      String
+  rating        Float    @default(5.0)
+  isFeatured    Boolean  @default(false)
+  category      String   // flights, hotels, packages, umrah, visas
+  itinerary     Json?    // Array of daily activities
+  includes      Json?    // Array of included services
+  excludes      Json?    // Array of excluded services
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Destination {
+  id          Int      @id @default(autoincrement())
+  name        String
+  image       String
+  description String?  @db.Text
+  programsCount Int    @default(0)
+  createdAt   DateTime @default(now())
+}
+
+model Blog {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String   @db.Text
+  image     String
+  author    String
+  tags      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Testimonial {
+  id        Int      @id @default(autoincrement())
+  name      String
+  comment   String   @db.Text
+  rating    Int      @default(5)
+  image     String?
+  createdAt DateTime @default(now())
+}
+
+model Inquiry {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  phone     String
+  subject   String?
+  message   String   @db.Text
+  status    String   @default("pending") // pending, read, replied
+  createdAt DateTime @default(now())
+}
+
+model SiteSetting {
+  id          Int      @id @default(autoincrement())
+  key         String   @unique
+  value       String   @db.Text
+  updatedAt   DateTime @updatedAt
+}

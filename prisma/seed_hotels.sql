@@ -1,0 +1,5 @@
+-- Sample Premium Hotels
+INSERT INTO Package (title, description, image, price, oldPrice, discount, duration, location, category, isFeatured, createdAt, updatedAt) VALUES 
+('فندق برج العرب - جناح ملكي', 'استمتع بأعلى مستويات الرفاهية في الفندق الوحيد في العالم المصنف 7 نجوم. إقامة ملكية شاملة الإفطار والمواصلات بسيارة رولز رويس.', 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200&auto=format&fit=crop', 4500, 5200, 15, 'ليلة واحدة', 'دبي، الإمارات', 'hotels', 1, NOW(), NOW()),
+('منتجع أنانتارا المالديف', 'فيلا خاصة فوق المياه الفيروزية مع مسبح خاص. استمتع بتجربة عشاء تحت الماء ورحلات بحرية عند الغروب.', 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?q=80&w=1200&auto=format&fit=crop', 3200, 3800, 16, 'ليلة واحدة', 'ماليه، المالديف', 'hotels', 1, NOW(), NOW()),
+('فندق فور سيزونز إسطنبول', 'إقامة تاريخية في قلب إسطنبول على ضفاف البوسفور. يتميز الفندق بطرازه العثماني الفخم وخدماته الاستثنائية.', 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200&auto=format&fit=crop', 2100, NULL, NULL, 'ليلة واحدة', 'إسطنبول، تركيا', 'hotels', 0, NOW(), NOW());
