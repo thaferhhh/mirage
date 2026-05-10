@@ -6,7 +6,9 @@ import { Save, ArrowRight, Image as ImageIcon, Plus, Trash2 } from 'lucide-react
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 
-const AddPackagePage = () => {
+import { Suspense } from 'react';
+
+const AddPackageContent = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get('category') || 'packages';
@@ -241,5 +243,16 @@ const AddPackagePage = () => {
     </div>
   );
 };
+
+const AddPackagePage = () => {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-slate-50">جاري التحميل...</div>}>
+      <AddPackageContent />
+    </Suspense>
+  );
+};
+
+export default AddPackagePage;
+
 
 export default AddPackagePage;
